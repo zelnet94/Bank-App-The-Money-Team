@@ -12,14 +12,17 @@ public class bankSystem {
 
 
         Scanner s = new Scanner(System.in);
-        Bank myBank = new Bank();
+        Bank bankApp = new Bank();
 
         int user_choice = 2;
 
+        System.out.println("WELCOME TO THE BANK APP CREATED BY: ");
+        System.out.println("THE MONEY TEAM \n");
         do {
             //display menu to user
             //ask user for his choice and validate it (make sure it is between 1 and 6)
-            System.out.println();
+
+
             System.out.println("1) Open a new bank account");
             System.out.println("2) Deposit to a bank account");
             System.out.println("3) Withdraw to bank account");
@@ -27,41 +30,52 @@ public class bankSystem {
             System.out.println("5) Print the detailed account information including last transactions");
             System.out.println("6) Quit");
             System.out.println();
-            System.out.print("Enter choice [1-6]: ");
+            System.out.print("Please enter your choice [1-6]: ");
             user_choice = s.nextInt();
             switch (user_choice) {
-                case 1: System.out.println("Enter a customer name");
+                case 1:
+                    System.out.println("Enter a customer name");
                     String fn = s.next();
                     String ln = s.next();
                     System.out.println("Hi, " + fn + " " + ln + "! Please enter an opening balance");
                     double d = s.nextDouble();
-                    System.out.println("Account was created and it has the following number: " + myBank.openNewAccount(fn, d));
+                    System.out.println("Account was created and it has the following number: " + bankApp.openNewAccount(fn, d));
                     break;
-                case 2: System.out.println("Enter an account number");
+                case 2:
+                    System.out.println("Enter an account number");
                     int an = s.nextInt();
                     System.out.println("Enter a deposit amount");
                     double da = s.nextDouble();
-                    myBank.depositTo(an, da);
+                    bankApp.depositTo(an, da);
                     break;
-                case 3: System.out.println("Enter an account number");
+                case 3:
+                    System.out.println("Enter an account number");
                     int acn = s.nextInt();
                     System.out.println("Enter a withdraw amount");
                     double wa = s.nextDouble();
-                    myBank.withdrawFrom(acn, wa);
+                    bankApp.withdrawFrom(acn, wa);
                     break;
-                case 4: System.out.println("Enter a account number");
+                case 4:
+                    System.out.println("Enter an account number");
                     int anum = s.nextInt();
-                    myBank.printAccountInfo(anum);
+                    bankApp.printAccountInfo(anum);
                     break;
-                case 5:  System.out.println("Enter a account number");
+                case 5:
+                    System.out.println("Enter an account number");
                     anum = s.nextInt();
-                    myBank.printTransactionInfo(anum);
+                    bankApp.printTransactionInfo(anum);
                     break;
-                default: System.out.println("Invalid option. Please try again.");
+                default:
+                    System.out.println("Invalid option. Please try again.");
 
             }
         }
-        while (user_choice != '6');
+        while (user_choice != '0');
+
+        if (user_choice == '6') ;
+        {
+            System.exit(0);
+        }
     }
 
     static class Bank {
@@ -161,7 +175,7 @@ public class bankSystem {
         private  static int noOfAccounts=0;
 
         public String getAccountInfo(){
-            return "Account number: " + accountNum + "\nCustomer Name: " + customerName + "\nBalance:" + balance +"\n";
+            return "Account number: " + accountNum + "\nCustomer Name: " + customerName + "\nBalance: $" + balance +"\n";
         }
 
         public String getTransactionInfo(int n)
@@ -230,28 +244,3 @@ public class bankSystem {
 
 
 
-
-        /* FILE INPUT SECTION **/
-// This will save data for each account
-//boolean option to save data
-//print log file for validation
-
-
-     /*---------------------------------------------*/
-
-/** USER INPUT SECTION **/
-//user input for each menu value
-
-//menu value 1 (account balance)
-//menu value 2 (withdrawal)
-//menu value 3 (deposit)
-//menu value 4 (exit)
-
-//We might need to use switching, casing, and breaking for each value.
-// We used this in 147 and it should be in the book.
-
-
-
-        /*We could pass each variable (menu option) by reference
-          BUT, we might need to create multiple java programs.
-         */
